@@ -10,29 +10,32 @@
 <div class="container row h-100 w-100" style="border:4px solid #cecece;">
   <div class="col-sm-12 my-auto">
     <div class="w-25 mx-auto">
-      <h1>Sign Up!</h1>
-      <form method="POST" action="{% url 'signup' %}">
+      <h1>Create</h1>
+      <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
         {% csrf_token %}
-        Username:
+        Title:
         <br>
-        <input type="text" name="username" />
+        <input type="text" name="title" />
         <br>
-        Password:
+        Body:
         <br>
-        <input type="password" name="password1" id="">
+        <input type="textbox" name="body" />
         <br>
-        Confirm Password:
+        URL:
         <br>
-        <input type="password" name="password2" id="">
+        <input type="text" name="url" />
+        <br>
+        Icon:
+        <br>
+        <input type="file" name="icon" />
         <br>
         <br>
-        <input class="btn btn-primary" type="submit" value="Sign Up">
+        <input class="btn btn-primary" type="submit" value="Post Video" />
       </form>
       <br>
     </div>
   </div>
 </div>
-
 
 <!-- PAGE ENDS HERE -->
 {% endblock %}

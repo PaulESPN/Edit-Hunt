@@ -11,7 +11,7 @@
   <div class="col-sm-12 my-auto">
     <div class="w-25 mx-auto">
       <h1>Login!</h1>
-      <form method="post" action="{% url 'login' %}">
+      <form method="POST" action="{% url 'login' %}">
         {% csrf_token %}
         Username:
         <br>

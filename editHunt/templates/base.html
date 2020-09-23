@@ -39,6 +39,7 @@
             <form id='logout' method="POST" action="{% url 'logout' %}">
               {% csrf_token %}
               <input type="hidden">
+            </form>
           </li>
           {% else %}
           <li class="nav-item">
@@ -47,7 +48,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">Login</a>
           </li>
-          {% endif %}
+          {% endif %} 
         </ul>
       </div>
     </div>
