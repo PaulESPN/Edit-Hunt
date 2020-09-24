@@ -1,8 +1,53 @@
 {% extends 'base.html' %}
+{% load embed_video_tags %}
 {% block content %}
 <!-- PAGE STARTS HERE -->
-<br>
-<h1>HOME PAGE</h1>
 
+{% if error %}
+{{ error }}
+<br>
+<br>
+{% endif %}
+{% for edit in edits.all %}
+<div class='row'>
+  <div class="col-2">
+    <a href="javascript:{document.getElementById('upvote{{edit.id}}').submit()}"><button class="btn btn-primary btn-block btn-large" style="cursor: pointer;"><span class="oi oi-caret-top"></span> {{edit.votecounter}}</button></a>
+  </div>
+  <a href="/edits/{{edit.id}}" style="cursor: pointer;">
+    <h1>{{edit.title}}</h1>
+  </a>
+</div>
+<div class="row">
+  <div class="col-2">
+    <br>
+  </div>
+  <div class="col-8">
+    {% video edit.video 'small' %}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-2">
+    <br>
+  </div>
+  <div class="col-4">
+
+    <body>
+      Posted by {{edit.hunter.username}}
+    </body>
+  </div>
+  <div class="col-4">
+
+    <body>
+      <span class="oi oi-calendar"></span> {{edit.pub_date}}
+    </body>
+  </div>
+</div>
+<form id='upvote{{edit.id}}' method="POST" action="{% url 'upvote' edit.id %}">
+  {% csrf_token %}
+  <input type="hidden">
+</form>
+<br>
+{% endfor %}
 <!-- PAGE ENDS HERE -->
 {% endblock %}

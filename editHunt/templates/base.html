@@ -9,12 +9,13 @@
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v3.8.5">
   <title>Edit Hunt</title>
+  <link rel="shortcut icon" type="image/png" href="{% static 'logo.png' %}" />
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sticky-footer/">
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+  <link href="{% static 'open-iconic/font/css/open-iconic-bootstrap.css' %}" rel="stylesheet">
   <!-- Custom styles for this template -->
 </head>
 
@@ -22,7 +23,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <a class="navbar-brand" href="{% url 'home' %}">
-        <img src="{% static 'icon.png' %}" class="d-inline-block align-top" width="30" height="30" alt="">
+        <img src="{% static 'logo.png' %}" class="d-inline-block align-top" width="30" height="30" alt="">
         Edit Hunt
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +33,7 @@
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="#"></a>
+            <a class="nav-link" href="{% url 'create' %}"><span class="oi oi-video"></span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
@@ -54,7 +55,7 @@
     </div>
   </nav>
 
-
+  <br>
   <div class="container">
     {% block content %}
     <!--
@@ -67,7 +68,7 @@
   <footer class=" footer mt-auto py-3">
     <div class="container text-center">
       <span class="text-muted">© Paul Espinoza {% now "Y" %}</span>
-      <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
     </div>
   </footer>
 
