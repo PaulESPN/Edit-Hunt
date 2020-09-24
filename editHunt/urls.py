@@ -23,6 +23,6 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('allauth.urls')),
     path('edits/', include('edits.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

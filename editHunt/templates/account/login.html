@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load account socialaccount %}
+{% block content %}
+<div class="container row h-100 w-100" style="border:4px solid #cecece;">
+  <div class="col-sm-12 my-auto">
+    <div class="w-50 mx-auto">
+      <h1>Sign In</h1>
+
+      {% get_providers as socialaccount_providers %}
+
+      <form id="standardLogin" class="login" method="POST" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <a class="button secondaryAction" href="{% url 'account_reset_password' %}">Forgot Password?</a>
+      </form>
+      <br>
+      <div class="row">
+        <div class="col-8">
+          <a href="javascript:{document.getElementById('standardLogin').submit()}"><button class="btn btn-secondary btn-block btn-lg" type="submit">Sign In</button></a>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-8"> <a class="btn btn-lg btn-google btn-block btn-outline-dark" href="javascript:{document.getElementById('googleButton').submit()}"><img src="https://img.icons8.com/color/16/000000/google-logo.png">
+            Sign in</a> </div>
+      </div>
+    </div>
+    <form action="{% provider_login_url 'google' %}" id="googleButton">
+      <input type="hidden" name="" value="">
+    </form>
+    <br>
+  </div>
+</div>
+</div>
+{% endblock %}

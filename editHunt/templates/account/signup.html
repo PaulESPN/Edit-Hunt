@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load account socialaccount %}
+{% load i18n %}
+{% block content %}
+<div class="container row h-100 w-100" style="border:4px solid #cecece;">
+  <div class="col-sm-12 my-auto">
+    <div class="w-50 mx-auto">
+      <h1>Sign Up</h1>
+      <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+      </form>
+      <div class="col-8">
+        <a href="javascript:{document.getElementById('signup_form').submit()}"><button type="submit" class="btn btn-secondary btn-block btn-lg" type="submit">Sign Up</button></a>
+      </div>
+      <br>
+      <div class="col-8">
+        <a href="javascript:{document.getElementById('googleButton').submit()}"><button type="submit" class="btn btn-lg btn-block btn-outline-dark"><img src="https://img.icons8.com/color/16/000000/google-logo.png">
+            Sign Up</button></a>
+      </div>
+
+    </div>
+    <form action="{% provider_login_url 'google' %}" id="googleButton">
+      <input type="hidden" name="" value="">
+    </form>
+    <br>
+  </div>
+</div>
+</div>
+{% endblock %}

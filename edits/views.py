@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.http import HttpResponseRedirect
 # Create your views here.
 def home(request):
-    edits = Edit.objects
+    edits = Edit.objects.order_by('-votecounter')
     return render(request, 'edits/home.html', {'edits':edits})
 
 @login_required(login_url='/accounts/signup')
@@ -14,7 +14,6 @@ def create(request):
         if request.POST['title'] and request.POST['video']:
             edit = Edit()
             edit.title = request.POST['title']
-            edit.body = request.POST['body']
             edit.video = request.POST['video']
             edit.pub_date = timezone.datetime.now()
             edit.hunter = request.user
