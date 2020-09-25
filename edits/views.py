@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.http import HttpResponseRedirect
 # Create your views here.
 def home(request):
-    edits = Edit.objects.order_by('-votecounter')
+    edits = Edit.objects.order_by('-votecounter', '-pub_date')
     return render(request, 'edits/home.html', {'edits':edits})
 
 @login_required(login_url='/accounts/signup')
