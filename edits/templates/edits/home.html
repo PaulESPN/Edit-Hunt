@@ -11,6 +11,9 @@
 {% for edit in edits.all %}
 <div class='row'>
   <div class="col-2">
+    <br>
+  </div>
+  <div class="col-2">
     <a href="javascript:{document.getElementById('upvote{{edit.id}}').submit()}"><button class="btn btn-primary btn-block btn-large" style="cursor: pointer;"><span class="oi oi-caret-top"></span> {{edit.votecounter}}</button></a>
   </div>
   <a href="/edits/{{edit.id}}" style="cursor: pointer;">
@@ -18,7 +21,7 @@
   </a>
 </div>
 <div class="row">
-  <div class="col-2">
+  <div class="col-4">
     <br>
   </div>
   <div class="col-8">
@@ -27,7 +30,7 @@
 </div>
 
 <div class="row">
-  <div class="col-2">
+  <div class="col-4">
     <br>
   </div>
   <div class="col-4">
