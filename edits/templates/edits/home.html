@@ -10,19 +10,19 @@
 {% endif %}
 {% for edit in edits.all %}
 <div class='row'>
-  <div class="col-2">
+  <div class="col-3">
     <br>
-  </div>
-  <div class="col-2">
-    <a href="javascript:{document.getElementById('upvote{{edit.id}}').submit()}"><button class="btn btn-primary btn-block btn-large" style="cursor: pointer;"><span class="oi oi-caret-top"></span> {{edit.votecounter}}</button></a>
   </div>
   <a href="/edits/{{edit.id}}" style="cursor: pointer;">
     <h1>{{edit.title}}</h1>
   </a>
 </div>
 <div class="row">
-  <div class="col-4">
+  <div class="col-1">
     <br>
+  </div>
+  <div class="col-2">
+    <a href="javascript:{document.getElementById('upvote{{edit.id}}').submit()}"><button class="btn btn-primary btn-block btn-large" style="cursor: pointer;"><span class="oi oi-caret-top"></span> {{edit.votecounter}}</button></a>
   </div>
   <div class="col-8">
     {% video edit.video 'small' %}
@@ -30,13 +30,13 @@
 </div>
 
 <div class="row">
-  <div class="col-4">
+  <div class="col-3">
     <br>
   </div>
   <div class="col-4">
 
     <body>
-      Posted by {{edit.hunter.username}}
+      Posted by <h4>{{edit.hunter.username}}</h4>
     </body>
   </div>
   <div class="col-4">
@@ -45,6 +45,9 @@
       <span class="oi oi-calendar"></span> {{edit.pubdatepretty}}
     </body>
   </div>
+</div>
+<div class="row" style="border-bottom:4px solid #cecece;">
+  <br>
 </div>
 <form id='upvote{{edit.id}}' method="POST" action="{% url 'upvote' edit.id %}">
   {% csrf_token %}
