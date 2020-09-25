@@ -41,5 +41,11 @@ def upvote(request, edit_id):
                 vote.save()
                 edit.votecounter += 1
                 edit.save()
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            else:
+                votePass = Vote.objects.get(edit=edit, hunter=request.user)
+                votePass.delete()
+                edit.votecounter -= 1
+                edit.save()
+
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         #return redirect('/edits/'+ str(edit.id))
